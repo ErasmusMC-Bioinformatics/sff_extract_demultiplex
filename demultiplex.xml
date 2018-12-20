@@ -1,0 +1,394 @@
+<tool id="demultiplex" name="Demultiplex" version="1.0">
+	<description> </description>
+	<requirements>
+		<requirement type="package" version="0.0.13">fastx_toolkit</requirement>
+	</requirements>
+	<command interpreter="bash">
+		wrapper.sh "$input" "$out_file" "$out_file.files_path" "$where" "$mismatches" "$partial" "$input.name"
+		#for $i, $b in enumerate($barcodes)
+            "$b.id"
+            "$b.mid"
+            "$b.trim_start"
+            "$b.trim_end"
+    #end for
+	</command>
+	<inputs>
+		<param name="input" type="data" label="File to split" />
+		<repeat name="barcodes" title="Barcodes" min="1" default="1">
+      <param name="id" type="text" size="50" label="ID" />
+			<param name="mid" type="select" label="Mid">
+				<option value="ACGAGTGCGT">MID-1</option>
+				<option value="ACGCACTCGT">MID-1 reverse complement</option>
+				<option value="ACGCTCGACA">MID-2</option>
+				<option value="TGTCGAGCGT">MID-2 reverse complement</option>
+				<option value="AGACGCACTC">MID-3</option>
+				<option value="GAGTGCGTCT">MID-3 reverse complement</option>
+				<option value="AGCACTGTAG">MID-4</option>
+				<option value="CTACAGTGCT">MID-4 reverse complement</option>
+				<option value="ATCAGACACG">MID-5</option>
+				<option value="CGTGTCTGAT">MID-5 reverse complement</option>
+				<option value="ATATCGCGAG">MID-6</option>
+				<option value="CTCGCGATAT">MID-6 reverse complement</option>
+				<option value="CGTGTCTCTA">MID-7</option>
+				<option value="TAGAGACACG">MID-7 reverse complement</option>
+				<option value="CTCGCGTGTC">MID-8</option>
+				<option value="GACACGCGAG">MID-8 reverse complement</option>
+				<option value="TCTCTATGCG">MID-10</option>
+				<option value="CGCATAGAGA">MID-10 reverse complement</option>
+				<option value="TGATACGTCT">MID-11</option>
+				<option value="AGACGTATCA">MID-11 reverse complement</option>
+				<option value="CATAGTAGTG">MID-13</option>
+				<option value="CACTACTATG">MID-13 reverse complement</option>
+				<option value="CGAGAGATAC">MID-14</option>
+				<option value="GTATCTCTCG">MID-14 reverse complement</option>
+				<option value="ATACGACGTA">MID-15</option>
+				<option value="TACGTCGTAT">MID-15 reverse complement</option>
+				<option value="TCACGTACTA">MID-16</option>
+				<option value="TAGTACGTGA">MID-16 reverse complement</option>
+				<option value="CGTCTAGTAC">MID-17</option>
+				<option value="GTACTAGACG">MID-17 reverse complement</option>
+				<option value="TCTACGTAGC">MID-18</option>
+				<option value="GCTACGTAGA">MID-18 reverse complement</option>
+				<option value="TGTACTACTC">MID-19</option>
+				<option value="GAGTAGTACA">MID-19 reverse complement</option>
+				<option value="ACGACTACAG">MID-20</option>
+				<option value="CTGTAGTCGT">MID-20 reverse complement</option>
+				<option value="CGTAGACTAG">MID-21</option>
+				<option value="CTAGTCTACG">MID-21 reverse complement</option>
+				<option value="TACGAGTATG">MID-22</option>
+				<option value="CATACTCGTA">MID-22 reverse complement</option>
+				<option value="TACTCTCGTG">MID-23</option>
+				<option value="CACGAGAGTA">MID-23 reverse complement</option>
+				<option value="TAGAGACGAG">MID-24</option>
+				<option value="CTCGTCTCTA">MID-24 reverse complement</option>
+				<option value="TCGTCGCTCG">MID-25</option>
+				<option value="CGAGCGACGA">MID-25 reverse complement</option>
+				<option value="ACATACGCGT">MID-26</option>
+				<option value="ACGCGTATGT">MID-26 reverse complement</option>
+				<option value="ACGCGAGTAT">MID-27</option>
+				<option value="ATACTCGCGT">MID-27 reverse complement</option>
+				<option value="ACTACTATGT">MID-28</option>
+				<option value="ACATAGTAGT">MID-28 reverse complement</option>
+				<option value="ACTGTACAGT">MID-29</option>
+				<option value="ACTGTACAGT">MID-29 reverse complement</option>
+				<option value="AGACTATACT">MID-30</option>
+				<option value="AGTATAGTCT">MID-30 reverse complement</option>
+				<option value="AGCGTCGTCT">MID-31</option>
+				<option value="AGACGACGCT">MID-31 reverse complement</option>
+				<option value="AGTACGCTAT">MID-32</option>
+				<option value="ATAGCGTACT">MID-32 reverse complement</option>
+				<option value="ATAGAGTACT">MID-33</option>
+				<option value="AGTACTCTAT">MID-33 reverse complement</option>
+				<option value="CACGCTACGT">MID-34</option>
+				<option value="ACGTAGCGTG">MID-34 reverse complement</option>
+				<option value="CAGTAGACGT">MID-35</option>
+				<option value="ACGTCTACTG">MID-35 reverse complement</option>
+				<option value="CGACGTGACT">MID-36</option>
+				<option value="AGTCACGTCG">MID-36 reverse complement</option>
+				<option value="TACACACACT">MID-37</option>
+				<option value="AGTGTGTGTA">MID-37 reverse complement</option>
+				<option value="TACACGTGAT">MID-38</option>
+				<option value="ATCACGTGTA">MID-38 reverse complement</option>
+				<option value="TACAGATCGT">MID-39</option>
+				<option value="ACGATCTGTA">MID-39 reverse complement</option>
+				<option value="TACGCTGTCT">MID-40</option>
+				<option value="AGACAGCGTA">MID-40 reverse complement</option>
+				<option value="TAGTGTAGAT">MID-41</option>
+				<option value="ATCTACACTA">MID-41 reverse complement</option>
+				<option value="TCGATCACGT">MID-42</option>
+				<option value="ACGTGATCGA">MID-42 reverse complement</option>
+				<option value="TCGCACTAGT">MID-43</option>
+				<option value="ACTAGTGCGA">MID-43 reverse complement</option>
+				<option value="TCTAGCGACT">MID-44</option>
+				<option value="AGTCGCTAGA">MID-44 reverse complement</option>
+				<option value="TCTATACTAT">MID-45</option>
+				<option value="ATAGTATAGA">MID-45 reverse complement</option>
+				<option value="TGACGTATGT">MID-46</option>
+				<option value="ACATACGTCA">MID-46 reverse complement</option>
+				<option value="TGTGAGTAGT">MID-47</option>
+				<option value="ACTACTCACA">MID-47 reverse complement</option>
+				<option value="ACAGTATATA">MID-48</option>
+				<option value="TATATACTGT">MID-48 reverse complement</option>
+				<option value="ACGCGATCGA">MID-49</option>
+				<option value="TCGATCGCGT">MID-49 reverse complement</option>
+				<option value="ACTAGCAGTA">MID-50</option>
+				<option value="TACTGCTAGT">MID-50 reverse complement</option>
+				<option value="AGCTCACGTA">MID-51</option>
+				<option value="TACGTGAGCT">MID-51 reverse complement</option>
+				<option value="AGTATACATA">MID-52</option>
+				<option value="TATGTATACT">MID-52 reverse complement</option>
+				<option value="AGTCGAGAGA">MID-53</option>
+				<option value="TCTCTCGACT">MID-53 reverse complement</option>
+				<option value="AGTGCTACGA">MID-54</option>
+				<option value="TCGTAGCACT">MID-54 reverse complement</option>
+				<option value="CGATCGTATA">MID-55</option>
+				<option value="TATACGATCG">MID-55 reverse complement</option>
+				<option value="CGCAGTACGA">MID-56</option>
+				<option value="TCGTACTGCG">MID-56 reverse complement</option>
+				<option value="CGCGTATACA">MID-57</option>
+				<option value="TGTATACGCG">MID-57 reverse complement</option>
+				<option value="CGTACAGTCA">MID-58</option>
+				<option value="TGACTGTACG">MID-58 reverse complement</option>
+				<option value="CGTACTCAGA">MID-59</option>
+				<option value="TCTGAGTACG">MID-59 reverse complement</option>
+				<option value="CTACGCTCTA">MID-60</option>
+				<option value="TAGAGCGTAG">MID-60 reverse complement</option>
+				<option value="CTATAGCGTA">MID-61</option>
+				<option value="TACGCTATAG">MID-61 reverse complement</option>
+				<option value="TACGTCATCA">MID-62</option>
+				<option value="TGATGACGTA">MID-62 reverse complement</option>
+				<option value="TAGTCGCATA">MID-63</option>
+				<option value="TATGCGACTA">MID-63 reverse complement</option>
+				<option value="TATATATACA">MID-64</option>
+				<option value="TGTATATATA">MID-64 reverse complement</option>
+				<option value="TATGCTAGTA">MID-65</option>
+				<option value="TACTAGCATA">MID-65 reverse complement</option>
+				<option value="TCACGCGAGA">MID-66</option>
+				<option value="TCTCGCGTGA">MID-66 reverse complement</option>
+				<option value="TCGATAGTGA">MID-67</option>
+				<option value="TCACTATCGA">MID-67 reverse complement</option>
+				<option value="TCGCTGCGTA">MID-68</option>
+				<option value="TACGCAGCGA">MID-68 reverse complement</option>
+				<option value="TCTGACGTCA">MID-69</option>
+				<option value="TGACGTCAGA">MID-69 reverse complement</option>
+				<option value="TGAGTCAGTA">MID-70</option>
+				<option value="TACTGACTCA">MID-70 reverse complement</option>
+				<option value="TGTAGTGTGA">MID-71</option>
+				<option value="TCACACTACA">MID-71 reverse complement</option>
+				<option value="TGTCACACGA">MID-72</option>
+				<option value="TCGTGTGACA">MID-72 reverse complement</option>
+				<option value="TGTCGTCGCA">MID-73</option>
+				<option value="TGCGACGACA">MID-73 reverse complement</option>
+				<option value="ACACATACGC">MID-74</option>
+				<option value="GCGTATGTGT">MID-74 reverse complement</option>
+				<option value="ACAGTCGTGC">MID-75</option>
+				<option value="GCACGACTGT">MID-75 reverse complement</option>
+				<option value="ACATGACGAC">MID-76</option>
+				<option value="GTCGTCATGT">MID-76 reverse complement</option>
+				<option value="ACGACAGCTC">MID-77</option>
+				<option value="GAGCTGTCGT">MID-77 reverse complement</option>
+				<option value="ACGTCTCATC">MID-78</option>
+				<option value="GATGAGACGT">MID-78 reverse complement</option>
+				<option value="ACTCATCTAC">MID-79</option>
+				<option value="GTAGATGAGT">MID-79 reverse complement</option>
+				<option value="ACTCGCGCAC">MID-80</option>
+				<option value="GTGCGCGAGT">MID-80 reverse complement</option>
+				<option value="AGAGCGTCAC">MID-81</option>
+				<option value="GTGACGCTCT">MID-81 reverse complement</option>
+				<option value="AGCGACTAGC">MID-82</option>
+				<option value="GCTAGTCGCT">MID-82 reverse complement</option>
+				<option value="AGTAGTGATC">MID-83</option>
+				<option value="GATCACTACT">MID-83 reverse complement</option>
+				<option value="AGTGACACAC">MID-84</option>
+				<option value="GTGTGTCACT">MID-84 reverse complement</option>
+				<option value="AGTGTATGTC">MID-85</option>
+				<option value="GACATACACT">MID-85 reverse complement</option>
+				<option value="ATAGATAGAC">MID-86</option>
+				<option value="GTCTATCTAT">MID-86 reverse complement</option>
+				<option value="ATATAGTCGC">MID-87</option>
+				<option value="GCGACTATAT">MID-87 reverse complement</option>
+				<option value="ATCTACTGAC">MID-88</option>
+				<option value="GTCAGTAGAT">MID-88 reverse complement</option>
+				<option value="CACGTAGATC">MID-89</option>
+				<option value="GATCTACGTG">MID-89 reverse complement</option>
+				<option value="CACGTGTCGC">MID-90</option>
+				<option value="GCGACACGTG">MID-90 reverse complement</option>
+				<option value="CATACTCTAC">MID-91</option>
+				<option value="GTAGAGTATG">MID-91 reverse complement</option>
+				<option value="CGACACTATC">MID-92</option>
+				<option value="GATAGTGTCG">MID-92 reverse complement</option>
+				<option value="CGAGACGCGC">MID-93</option>
+				<option value="GCGCGTCTCG">MID-93 reverse complement</option>
+				<option value="CGTATGCGAC">MID-94</option>
+				<option value="GTCGCATACG">MID-94 reverse complement</option>
+				<option value="CGTCGATCTC">MID-95</option>
+				<option value="GAGATCGACG">MID-95 reverse complement</option>
+				<option value="CTACGACTGC">MID-96</option>
+				<option value="GCAGTCGTAG">MID-96 reverse complement</option>
+				<option value="CTAGTCACTC">MID-97</option>
+				<option value="GAGTGACTAG">MID-97 reverse complement</option>
+				<option value="CTCTACGCTC">MID-98</option>
+				<option value="GAGCGTAGAG">MID-98 reverse complement</option>
+				<option value="CTGTACATAC">MID-99</option>
+				<option value="GTATGTACAG">MID-99 reverse complement</option>
+				<option value="TAGACTGCAC">MID-100</option>
+				<option value="GTGCAGTCTA">MID-100 reverse complement</option>
+				<option value="TAGCGCGCGC">MID-101</option>
+				<option value="GCGCGCGCTA">MID-101 reverse complement</option>
+				<option value="TAGCTCTATC">MID-102</option>
+				<option value="GATAGAGCTA">MID-102 reverse complement</option>
+				<option value="TATAGACATC">MID-103</option>
+				<option value="GATGTCTATA">MID-103 reverse complement</option>
+				<option value="TATGATACGC">MID-104</option>
+				<option value="GCGTATCATA">MID-104 reverse complement</option>
+				<option value="TCACTCATAC">MID-105</option>
+				<option value="GTATGAGTGA">MID-105 reverse complement</option>
+				<option value="TCATCGAGTC">MID-106</option>
+				<option value="GACTCGATGA">MID-106 reverse complement</option>
+				<option value="TCGAGCTCTC">MID-107</option>
+				<option value="GAGAGCTCGA">MID-107 reverse complement</option>
+				<option value="TCGCAGACAC">MID-108</option>
+				<option value="GTGTCTGCGA">MID-108 reverse complement</option>
+				<option value="TCTGTCTCGC">MID-109</option>
+				<option value="GCGAGACAGA">MID-109 reverse complement</option>
+				<option value="TGAGTGACGC">MID-110</option>
+				<option value="GCGTCACTCA">MID-110 reverse complement</option>
+				<option value="TGATGTGTAC">MID-111</option>
+				<option value="GTACACATCA">MID-111 reverse complement</option>
+				<option value="TGCTATAGAC">MID-112</option>
+				<option value="GTCTATAGCA">MID-112 reverse complement</option>
+				<option value="TGCTCGCTAC">MID-113</option>
+				<option value="GTAGCGAGCA">MID-113 reverse complement</option>
+				<option value="ACGTGCAGCG">MID-114</option>
+				<option value="CGCTGCACGT">MID-114 reverse complement</option>
+				<option value="ACTCACAGAG">MID-115</option>
+				<option value="CTCTGTGAGT">MID-115 reverse complement</option>
+				<option value="AGACTCAGCG">MID-116</option>
+				<option value="CGCTGAGTCT">MID-116 reverse complement</option>
+				<option value="AGAGAGTGTG">MID-117</option>
+				<option value="CACACTCTCT">MID-117 reverse complement</option>
+				<option value="AGCTATCGCG">MID-118</option>
+				<option value="CGCGATAGCT">MID-118 reverse complement</option>
+				<option value="AGTCTGACTG">MID-119</option>
+				<option value="CAGTCAGACT">MID-119 reverse complement</option>
+				<option value="AGTGAGCTCG">MID-120</option>
+				<option value="CGAGCTCACT">MID-120 reverse complement</option>
+				<option value="ATAGCTCTCG">MID-121</option>
+				<option value="CGAGAGCTAT">MID-121 reverse complement</option>
+				<option value="ATCACGTGCG">MID-122</option>
+				<option value="CGCACGTGAT">MID-122 reverse complement</option>
+				<option value="ATCGTAGCAG">MID-123</option>
+				<option value="CTGCTACGAT">MID-123 reverse complement</option>
+				<option value="ATCGTCTGTG">MID-124</option>
+				<option value="CACAGACGAT">MID-124 reverse complement</option>
+				<option value="ATGTACGATG">MID-125</option>
+				<option value="CATCGTACAT">MID-125 reverse complement</option>
+				<option value="ATGTGTCTAG">MID-126</option>
+				<option value="CTAGACACAT">MID-126 reverse complement</option>
+				<option value="CACACGATAG">MID-127</option>
+				<option value="CTATCGTGTG">MID-127 reverse complement</option>
+				<option value="CACTCGCACG">MID-128</option>
+				<option value="CGTGCGAGTG">MID-128 reverse complement</option>
+				<option value="CAGACGTCTG">MID-129</option>
+				<option value="CAGACGTCTG">MID-129 reverse complement</option>
+				<option value="CAGTACTGCG">MID-130</option>
+				<option value="CGCAGTACTG">MID-130 reverse complement</option>
+				<option value="CGACAGCGAG">MID-131</option>
+				<option value="CTCGCTGTCG">MID-131 reverse complement</option>
+				<option value="CGATCTGTCG">MID-132</option>
+				<option value="CGACAGATCG">MID-132 reverse complement</option>
+				<option value="CGCGTGCTAG">MID-133</option>
+				<option value="CTAGCACGCG">MID-133 reverse complement</option>
+				<option value="CGCTCGAGTG">MID-134</option>
+				<option value="CACTCGAGCG">MID-134 reverse complement</option>
+				<option value="CGTGATGACG">MID-135</option>
+				<option value="CGTCATCACG">MID-135 reverse complement</option>
+				<option value="CTATGTACAG">MID-136</option>
+				<option value="CTGTACATAG">MID-136 reverse complement</option>
+				<option value="CTCGATATAG">MID-137</option>
+				<option value="CTATATCGAG">MID-137 reverse complement</option>
+				<option value="CTCGCACGCG">MID-138</option>
+				<option value="CGCGTGCGAG">MID-138 reverse complement</option>
+				<option value="CTGCGTCACG">MID-139</option>
+				<option value="CGTGACGCAG">MID-139 reverse complement</option>
+				<option value="CTGTGCGTCG">MID-140</option>
+				<option value="CGACGCACAG">MID-140 reverse complement</option>
+				<option value="TAGCATACTG">MID-141</option>
+				<option value="CAGTATGCTA">MID-141 reverse complement</option>
+				<option value="TATACATGTG">MID-142</option>
+				<option value="CACATGTATA">MID-142 reverse complement</option>
+				<option value="TATCACTCAG">MID-143</option>
+				<option value="CTGAGTGATA">MID-143 reverse complement</option>
+				<option value="TATCTGATAG">MID-144</option>
+				<option value="CTATCAGATA">MID-144 reverse complement</option>
+				<option value="TCGTGACATG">MID-145</option>
+				<option value="CATGTCACGA">MID-145 reverse complement</option>
+				<option value="TCTGATCGAG">MID-146</option>
+				<option value="CTCGATCAGA">MID-146 reverse complement</option>
+				<option value="TGACATCTCG">MID-147</option>
+				<option value="CGAGATGTCA">MID-147 reverse complement</option>
+				<option value="TGAGCTAGAG">MID-148</option>
+				<option value="CTCTAGCTCA">MID-148 reverse complement</option>
+				<option value="TGATAGAGCG">MID-149</option>
+				<option value="CGCTCTATCA">MID-149 reverse complement</option>
+				<option value="TGCGTGTGCG">MID-150</option>
+				<option value="CGCACACGCA">MID-150 reverse complement</option>
+				<option value="TGCTAGTCAG">MID-151</option>
+				<option value="CTGACTAGCA">MID-151 reverse complement</option>
+				<option value="TGTATCACAG">MID-152</option>
+				<option value="CTGTGATACA">MID-152 reverse complement</option>
+				<option value="TGTGCGCGTG">MID-153</option>
+				<option value="CACGCGCACA">MID-153 reverse complement</option>
+			</param>
+			
+			<param name="trim_start" type="integer" size="3" value="0" label="How many nucleotides to trim from the start" />
+		
+			<param name="trim_end" type="integer" size="3" value="0" label="How many nucleotides to trim from the end" />
+		</repeat>
+		
+		<param name="where" type="select" label="Barcodes found at">
+			<option value="bol">Start: 5' end</option>
+			<option value="eol">End: 3' end</option>
+		</param>
+		
+		<param name="mismatches" type="integer" size="3" value="2" label="Max. number of mismatches allowed." />
+		
+		<param name="partial" type="integer" size="3" value="0" label="Allow partial overlap of barcodes." />
+		
+	</inputs>
+	<outputs>
+		<data format="html" name="out_file" />
+	</outputs>
+	<help>
+**References**
+
+This tool makes use of the following freely available tools:
+
+- Sequences which are missing a gene region (FR1/CDR1 etc) in the analysed region are excluded
+- Sequences containing an ambiguous base in the analysed region are excluded
+- All other filtering/analysis is based on the analysed region
+
+**Input files**
+
+This tool uses .sff  files as input files. 
+
+.. class:: infomark
+
+Note: Files can be uploaded by using “get data” and “upload file”. No “type” or “Genome” have to be selected. Special characters should be prevented in the file names of the uploaded samples as these can give errors when running the immune repertoire pipeline. Underscores are allowed in the file names.
+
+**File to split**
+
+Please select here the file you would like to demultiplex.
+
+**Barcodes**
+
+*ID*: Please provide here for each sample to demultiplex, a sample name (consistent only out of letters, numbers and underscores)
+
+*Mid*: select the correct multiplex identifier (MID) tag that this sample is linked to. These MIDs tags originate from the Roche 454 (TCB No. 005-2009). You can either choose to search for the MID sequence at in the 5’to 3’prime direction or the reverse complement.
+
+*How many nucleotides to trim from the start*: indicate the number nucleotides that you would like to trim from the 5’ side of your read
+
+*How many nucleotides to trim from the end*: indicate the number nucleotides that you would like to trim from the 3’ side of your read
+
+*Insert Barcodes*: The insert barcodes button can be used to add more samples and their linked MID tags. 
+
+**Barcodes found at**
+
+Please select whether the barcodes (MID tags) can be found at the 5’end or the 3’end of the sequence.
+
+**Max. number of mismatches allowed**
+
+Please select the maximal number of mismatches allows in the MID tag.
+
+**Allow partial overlap of barcodes**
+
+Select the amount of overlap that is allowed between different barcodes. 
+
+**Execute**
+
+Upon pressing execute a new analysis is added to your history (right side of the page). Initially this analysis will be grey, after initiating the analysis colour of the analysis in the history will change to yellow. When the analysis is finished it will turn green in the history. Now the analysis can be opened by clicking on the eye icon on the analysis of interest. When an analysis turns red an error has occurred when running the analysis. If you click on the analysis title additional information can be found on the analysis. In addition a bug icon appears. Here more information on the error can be found.
+
+
+
+	</help>
+</tool>
